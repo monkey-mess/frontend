@@ -1,0 +1,15 @@
+.message-input {
+  width: 1200px;
+  height: 100px;
+  display: grid;
+  grid-template-columns: 1100px 100px;
+  .buttons{
+    width:100px;
+    background-color: var(--color-chat-canvas);
+    .send{
+      height:80px;
+      width: 80px;
+      border-radius: 40px;
+    }
+  }
+}

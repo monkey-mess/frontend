@@ -1,0 +1,11 @@
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+    width: 1200px;
+  flex-grow: 1;
+  background-color: #ffffff;
+  
+}
+

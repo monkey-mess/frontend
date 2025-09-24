@@ -1,0 +1,11 @@
+.send-message-form {
+    padding: 20px;
+    background-color: var(--color-textarea);
+    resize: none;
+    font-size: 18pt;
+    width: auto;
+    height: inherit;
+    &:focus {
+      outline: 0;
+    }
+  }

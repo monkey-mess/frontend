@@ -1,0 +1,29 @@
+.chat-preview {
+  color: var(--color-text-inverse);
+  height: 100px;
+  border: 1px solid var(--color-secondary);
+  display: grid;
+  grid-template-columns: 100px 200px;
+  .image {
+    background-color: var(--color-placeholder);
+    border-radius: 40px;
+    margin: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24pt;
+    font-weight: 800;
+  }
+  .text {
+    font-size: 16pt;
+    margin: 10px 10px 10px 10px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    .username {
+      font-weight: 800;
+    }
+    .last-message {
+      overflow: ellipsis;
+    }
+  }
+}
