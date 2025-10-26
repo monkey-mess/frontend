@@ -3,9 +3,13 @@
     background-color: var(--color-textarea);
     resize: none;
     font-size: 18pt;
-    width: auto;
+    width: 800px;
     height: inherit;
     &:focus {
-      outline: 0;
+        outline: 0;
     }
-  }
+}
+.send-button {
+    height: 100px;
+    width: 100px;
+}

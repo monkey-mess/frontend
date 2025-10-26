@@ -1,20 +1,10 @@
-export interface IMessage {
-  // senderId: number;
-  senderUsername: string;
-  senderHandle: string;
-  senderAvatarURL?: string;
-  text: string;
-  isMe: boolean;
-}
-
 /**
- * @param senderHandle строковый id
+ * Используется для рендера сообщений. Не используется для обмена сообщениями
  */
-export function createMessage(): IMessage {
-  return {
-    senderUsername: "",
-    senderHandle: "",
-    text: "",
-    isMe: false,
-  };
+export interface IMessage {
+    senderId: number;
+    senderUsername: string;
+    senderAvatarURL?: string;
+    text: string;
+    isMe: boolean;
 }

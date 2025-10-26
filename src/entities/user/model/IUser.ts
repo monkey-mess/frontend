@@ -1,14 +1,11 @@
 // someFile.ts
 /**
- * @param {[number]} id // UUID, не используемый пользователем
- * @param {[string]} userHandle // Ссылка на профлиь - пользователь может изменить её
+ * @param {[number]} id // UUID пользователя
+ * @param {[string]} userHandle // Ссылка на профлиь - пользователь может изменить её (@user)
  */
 export interface IUser {
-  id: number;
-  userHandle: string;
-  username: string;
-  avatarURL?: string;
-}
-export function createUser(): IUser {
-  return { id: 0, userHandle: "", username: "" };
+    id: number;
+    userHandle: string;
+    username: string;
+    avatarURL?: string;
 }

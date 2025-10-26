@@ -1,10 +1,10 @@
 import { ChatList } from "@/widgets/chat-list";
 import { ChatCanvas } from "@/widgets/chat-canvas";
 export default function Chatting() {
-  return (
-    <>
-      <ChatList />
-      <ChatCanvas />
-    </>
-  );
+    return (
+        <>
+            <ChatList />
+            <ChatCanvas conversationId={1} />
+        </>
+    );
 }

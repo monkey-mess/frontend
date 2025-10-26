@@ -1,25 +1,22 @@
 "use client";
-import { getMessageList, IMessageAPI, MessageList } from "@/entities/message";
+import { MessageList } from "@/entities/message";
 import { MessageInput } from "./MessageInput";
 import "./ChatCanvas.css";
 import { useMessageList } from "../model/useMessageList";
-import { useState } from "react";
 
 /**
- * @param chatID по нему будет фетчиться чат
+ * @param conversationId по нему будет фетчиться чат
  */
-export function ChatCanvas({ chatId }: { chatId?: string | number }) {
-  chatId = "evilb0gam";
-  const test = useMessageList();
+export function ChatCanvas({ conversationId }: { conversationId: number | null }) {
+    const messageList = useMessageList(conversationId, 0, 100);
+    if (conversationId) {
+        return (
+            <div className="chat-canvas">
+                <MessageList messageList={messageList} />
+                <MessageInput />
+            </div>
+        );
+    }
 
-  if (chatId) {
-    return (
-      <div className="chat-canvas">
-        <MessageList />
-        <MessageInput />
-      </div>
-    );
-  }
-
-  return <></>;
+    return <></>;
 }

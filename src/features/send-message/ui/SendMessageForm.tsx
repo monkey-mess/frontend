@@ -1,12 +1,24 @@
 "use client";
-
+import { FormEvent, useRef } from "react";
 import "./SendMessageForm.css";
 
 export function SendMessageForm() {
-  return (
-    <textarea
-      className="send-message-form"
-      placeholder="Write your message..."
-    />
-  );
+    const inputRef = useRef<HTMLTextAreaElement | null>(null);
+    function handleSubmit(): void {
+        if (!inputRef) {
+            return;
+        }
+    }
+
+    return (
+        <>
+            <textarea ref={inputRef} className="send-message-form" placeholder="Write your message..." />
+            <button
+                onClick={() => {
+                    handleSubmit();
+                }}
+                className="send-button"
+            />
+        </>
+    );
 }
