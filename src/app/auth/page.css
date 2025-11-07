@@ -1,0 +1,98 @@
+.auth-page {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: none;
+    background-color: var(--color-background);
+}
+.auth-window {
+    width: 600px;
+    height: 700px;
+    border: 6px solid var(--color-placeholder);
+    box-sizing: border-box;
+    border-radius: 50px;
+    background-color: var(--color-textarea);
+    overflow: hidden;
+    .auth-window__title {
+        width: 100%;
+        height: 80px;
+        /* margin-bottom: 30px; */
+        color: var(--color-placeholder);
+        font-size: 52;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        background-color: var(--color-chat-canvas);
+    }
+    .form {
+        box-sizing: border-box;
+        padding: 40px 40px 40px 40px;
+        height: 100%;
+        width: 100%;
+        transition: transform 1.2s;
+
+        .auth-window__error {
+            display: flex;
+            align-items: flex-end;
+            min-height: 30px;
+            margin: 0;
+            font-size: 16pt;
+            color: red;
+        }
+        .auth-window__field {
+            width: 100%;
+            border: 1px solid var(--color-secondary);
+            background-color: var(--color-chat-canvas);
+            border-radius: 20px;
+            height: 80px;
+            display: flex;
+            /* margin-bottom: 30px; */
+            .auth-window__input-svg-container {
+                flex: 0 0 80px;
+                vertical-align: bottom;
+                width: 80px;
+                height: 80px;
+                border-right: 1px solid var(--color-secondary);
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                .auth-window__input-svg {
+                    width: 64px;
+                    height: 64px;
+                }
+            }
+            .auth-window__input {
+                border: none;
+                background: none;
+                min-width: 0;
+                display: inline-flex;
+                height: inherit;
+                /* flex-shrink: 1 1 auto; */
+                /* flex-grow: 1; */
+                padding-left: 20px;
+                box-sizing: border-box;
+                font-size: 24pt;
+                vertical-align: bottom;
+                transition: outline 0.1s;
+                border-bottom-right-radius: 20px;
+                border-top-right-radius: 20px;
+                outline: none;
+                &:focus {
+                    outline: 4px solid var(--color-placeholder);
+                }
+            }
+        }
+        .auth-window__change-form {
+            width: 40%;
+            height: 80px;
+        }
+        .auth-window__submit {
+            width: 40%;
+            height: 80px;
+        }
+    }
+}

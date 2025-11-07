@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useState, createContext } from "react";
+import { useState, createContext } from "react";
 import { IUser } from "@/entities/user";
 
 interface IUserContext {

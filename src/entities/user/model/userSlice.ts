@@ -8,7 +8,7 @@ export interface IUserState {
 
 export interface IUserSetAction {
     userId: number;
-    user?: IUser;
+    user: IUser;
 }
 
 const initialState: IUserState = {

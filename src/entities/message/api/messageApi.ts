@@ -1,4 +1,4 @@
-import { globalApi } from "@/shared/";
+import { backendApi } from "@/shared/";
 
 /**
  * Тип данных для обмена сообщений с бэкендом
@@ -15,7 +15,7 @@ export interface IMessageApi {
 /**
  * rtk query
  */
-const messageApi = globalApi.injectEndpoints({
+const messageApi = backendApi.injectEndpoints({
     endpoints: (build) => ({
         getMessageList: build.query<IMessageApi[], number>({
             query: (conversationId: number) => `chats/${conversationId}`,
