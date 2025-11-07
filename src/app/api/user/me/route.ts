@@ -1,5 +1,5 @@
-import { getToken } from "../../getCookies";
-import { mapJSONtoUser } from "../../mapJSONtoUser";
+import { getToken } from "@/shared/cookies";
+import { mapJSONtoUser } from "@/entities/user";
 
 export async function GET() {
     const accessToken = await getToken("access");

@@ -14,7 +14,7 @@ const initialState: ICurrentUserState = {
 };
 
 export interface ICurrentUserSetAction {
-    user: IUser | null;
+    currentUser: IUser | null;
 }
 
 const currentUserSlice = createSlice({
@@ -22,7 +22,7 @@ const currentUserSlice = createSlice({
     initialState,
     reducers: {
         setCurrentUser: (state, action: PayloadAction<ICurrentUserSetAction>) => {
-            state.currentUser = action.payload.user;
+            state.currentUser = action.payload.currentUserser;
         },
         clearCurrentUser: (state) => {
             state.currentUser = null;

@@ -1,6 +1,6 @@
 "use client";
 import "./page.css";
-import { IUser, IUserSetAction, setUser, ICurrentUserSetAction } from "@/entities/user";
+import { IUser, IUserSetAction, setUser, ICurrentUserSetAction, mapJSONtoUser } from "@/entities/user";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { redirect } from "next/navigation";
@@ -38,24 +38,15 @@ export default function Auth() {
 
     useEffect(() => {
         if (currentUserQuery.isSuccess) {
-            // console.log(currentUser.data);
-            const currentUser: IUser = {
-                id: currentUserQuery.data["id"],
-                userHandle: currentUserQuery.data["userHandle"],
-                username: currentUserQuery.data["username"],
-                avatarURL: currentUserQuery.data["avatarUrl"],
-            };
-            console.log("CURRENT USER: ", currentUser);
-            const userSetAction: IUserSetAction = {
-                user: currentUser,
-                userId: currentUser.id,
-            };
-            const currentUserSetAction: ICurrentUserSetAction = {
-                user: currentUser,
-            };
-
-            storeDispatch(setUser(userSetAction));
-            storeDispatch(setCurrentUser(currentUserSetAction));
+            const currentUser = mapJSONtoUser(currentUserQuery.data);
+            // console.log("CURRENT USER: ", currentUser);
+            if (currentUser) {
+                storeDispatch(
+                    setCurrentUser({
+                        currentUser: currentUser,
+                    })
+                );
+            }
             redirect("/");
         }
     }, [currentUserQuery]);

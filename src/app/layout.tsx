@@ -1,7 +1,7 @@
 import { AppProvider } from "./(Redux)/AppProvider";
 import "./globals.css";
-
-export default function RootLayout({
+import Init from "./Init";
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
@@ -9,6 +9,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <AppProvider>
+                <Init />
                 <body>{children}</body>
             </AppProvider>
         </html>

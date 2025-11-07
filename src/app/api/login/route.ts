@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { IUser } from "@/entities/user";
+import { setToken } from "../../../shared/cookies";
 // import { jwtDecode } from "jwt-decode";
 // import { mapJSONToUser } from "./mapJSONtoUser";
 
@@ -21,17 +22,12 @@ export async function POST(req: Request, res: Response) {
     const cookieStore = await cookies();
 
     const accessToken = responseJson["accessToken"];
-
     const refreshToken = responseJson["refreshToken"];
 
     // const decodedJwt = jwtDecode(accessToken);
 
-    cookieStore.set("accessToken", accessToken, {
-        httpOnly: true,
-    });
-    cookieStore.set("refreshToken", refreshToken, {
-        httpOnly: true,
-    });
+    setToken("access", accessToken);
+    setToken("refresh", refreshToken);
 
     return new Response(null, { status: 200 });
 }
