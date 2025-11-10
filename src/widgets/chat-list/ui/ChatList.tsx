@@ -1,5 +1,5 @@
 "use client";
-import { IChatPreview, ChatPreview } from "@/entities/chat-preview";
+import { IChatPreview, ChatPreview } from "@/entities/chat";
 import "./ChatList.css";
 
 export function ChatList() {

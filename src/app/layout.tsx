@@ -1,6 +1,5 @@
 import { AppProvider } from "./(Redux)/AppProvider";
 import "./globals.css";
-import Init from "./Init";
 export default async function RootLayout({
     children,
 }: Readonly<{
@@ -9,7 +8,6 @@ export default async function RootLayout({
     return (
         <html lang="en">
             <AppProvider>
-                <Init />
                 <body>{children}</body>
             </AppProvider>
         </html>

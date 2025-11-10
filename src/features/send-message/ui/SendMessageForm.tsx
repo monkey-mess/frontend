@@ -1,5 +1,5 @@
 "use client";
-import { FormEvent, useRef } from "react";
+import { useRef } from "react";
 import "./SendMessageForm.css";
 
 export function SendMessageForm() {

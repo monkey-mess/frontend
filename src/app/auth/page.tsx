@@ -1,55 +1,55 @@
 "use client";
 import "./page.css";
-import { IUser, IUserSetAction, setUser, ICurrentUserSetAction, mapJSONtoUser } from "@/entities/user";
+import { IProfile, IProfileSetAction, setProfile, ICurrentProfileSetAction, mapJSONtoProfile } from "@/entities/profile";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { redirect } from "next/navigation";
 import { MonkeyLoginSVG, MonkeyPasswordSVG } from "@svg/";
 
 import { useLoginMutation, useRegisterMutation, ILoginApi, IRegisterApi } from "./useAuthForm";
-import { useLazyGetMeQuery } from "@/entities/user/api/meApi";
+import { useLazyMeQuery } from "@/entities/profile/api/meApi";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/shared";
-import { setCurrentUser } from "@/entities/user/model/currentUserSlice";
+import { setCurrentProfile } from "@/entities/profile/model/currentProfileSlice";
 
 interface IRegisterFormData {
-    username: string;
+    profilename: string;
     password: string;
     confirmPassword: string;
 }
 interface ILoginFormData {
-    username: string;
+    profilename: string;
     password: string;
 }
 
 export default function Auth() {
     const [register, registerMutation] = useRegisterMutation();
     const [login, loginMutation] = useLoginMutation();
-    const [getMe, currentUserQuery, lastPromiseInfo] = useLazyGetMeQuery();
+    const [meTrigger, currentProfileQuery] = useLazyMeQuery();
     const storeDispatch = useDispatch();
 
-    const selectedData = useSelector((state: RootState) => state.userState.users);
+    const selectedData = useSelector((state: RootState) => state.profileState.profiles);
 
     useEffect(() => {
         if (loginMutation.isSuccess) {
-            getMe("");
+            meTrigger("");
         }
     }, [loginMutation]);
 
     useEffect(() => {
-        if (currentUserQuery.isSuccess) {
-            const currentUser = mapJSONtoUser(currentUserQuery.data);
-            // console.log("CURRENT USER: ", currentUser);
-            if (currentUser) {
+        if (currentProfileQuery.isSuccess) {
+            const currentProfile = mapJSONtoProfile(currentProfileQuery.data);
+            // console.log("CURRENT USER: ", currentProfile);
+            if (currentProfile) {
                 storeDispatch(
-                    setCurrentUser({
-                        currentUser: currentUser,
+                    setCurrentProfile({
+                        currentProfile: currentProfile,
                     })
                 );
             }
             redirect("/");
         }
-    }, [currentUserQuery]);
+    }, [currentProfileQuery]);
 
     const registerForm = useForm<IRegisterFormData>();
     const loginForm = useForm<ILoginFormData>();
@@ -68,7 +68,7 @@ export default function Auth() {
 
     function onRegisterSubmit(data: IRegisterFormData) {
         const postData: IRegisterApi = {
-            username: data.username,
+            profilename: data.profilename,
             password: data.password,
         };
         register(postData);
@@ -76,7 +76,7 @@ export default function Auth() {
 
     function onLoginSubmit(data: ILoginFormData) {
         const postData: ILoginFormData = {
-            username: data.username,
+            profilename: data.profilename,
             password: data.password,
         };
         login(postData);
@@ -86,7 +86,7 @@ export default function Auth() {
             <div className="auth-window">
                 <form className="form" ref={registerFormElement} onSubmit={registerForm.handleSubmit(onRegisterSubmit)}>
                     <div className="auth-window__title"> Register </div>
-                    <p className="auth-window__error">{registerForm.formState.errors.username?.message}</p>
+                    <p className="auth-window__error">{registerForm.formState.errors.profilename?.message}</p>
                     <div className="auth-window__field">
                         <div className="auth-window__input-svg-container">
                             <MonkeyLoginSVG className="auth-window__input-svg" />
@@ -94,7 +94,7 @@ export default function Auth() {
                         <input
                             className="auth-window__input"
                             placeholder="login"
-                            {...registerForm.register("username", {
+                            {...registerForm.register("profilename", {
                                 required: "Required",
                                 maxLength: { value: 18, message: "Too long (maximum 18 symbols)" },
                                 minLength: { value: 5, message: "Too short (minimum 5 symbols)" },
@@ -161,7 +161,7 @@ export default function Auth() {
                         <input
                             className="auth-window__input auth-window__input_inactive"
                             placeholder="login"
-                            {...loginForm.register("username", {
+                            {...loginForm.register("profilename", {
                                 required: "Required",
                                 maxLength: { value: 18, message: "Too long (maximum 18 symbols)" },
                                 minLength: { value: 5, message: "Too short (minimum 5 symbols)" },

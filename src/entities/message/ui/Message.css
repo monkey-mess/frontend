@@ -5,61 +5,60 @@
     font-size: 18pt;
     width: max-content;
     .avatar {
-      grid-area: avatar;
-      background-color: var(--color-placeholder);
-      color: var(--color-text-inverse);
-      width: 80px;
-      height: 80px;
-      border-radius: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+        grid-area: avatar;
+        background-color: var(--color-placeholder);
+        color: var(--color-text-inverse);
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .message-content {
-      grid-area: message-content;
-      width: max-content;
-      display: grid;
-      grid-template-rows: 40px 1fr;
-      .username {
-      }
-      .message {
-        background-color: var(--color-primary);
+        grid-area: message-content;
         width: max-content;
-        max-width: 600px;
-        padding: 10px 10px 10px 10px;
-      }
+        display: grid;
+        grid-template-rows: 40px 1fr;
+        .profilename {
+        }
+        .message {
+            background-color: var(--color-primary);
+            width: max-content;
+            max-width: 600px;
+            padding: 10px 10px 10px 10px;
+        }
     }
-  }
-
+}
 
 /* LEFT-TARGETED MESSAGE */
 .message-block {
-  grid-template-areas: "avatar message-content";
-  align-self: flex-start;
-  padding: 0 0 0 20px;
-  .message-content {
-    padding: 0 0 0 10px;
-    .message {
-      border-radius: 0px 30px 30px 30px;
+    grid-template-areas: "avatar message-content";
+    align-self: flex-start;
+    padding: 0 0 0 20px;
+    .message-content {
+        padding: 0 0 0 10px;
+        .message {
+            border-radius: 0px 30px 30px 30px;
+        }
     }
-  }
 }
 
 /* RIGHT-TARGETED MESSAGE */
-.message-block.current-user {
-  grid-template-areas: "message-content avatar";
-  grid-template-columns: 1fr 80px;
-  align-self: flex-end;
-  padding: 0 20px 0 0;
+.message-block.current-profile {
+    grid-template-areas: "message-content avatar";
+    grid-template-columns: 1fr 80px;
+    align-self: flex-end;
+    padding: 0 20px 0 0;
 
-  .message-content {
-    padding: 0 10px 0 0;
-    .username {
-      justify-self: end;
+    .message-content {
+        padding: 0 10px 0 0;
+        .profilename {
+            justify-self: end;
+        }
+        .message {
+            justify-self: end;
+            border-radius: 30px 0px 30px 30px;
+        }
     }
-    .message {
-      justify-self: end;
-      border-radius: 30px 0px 30px 30px;
-    }
-  }
 }

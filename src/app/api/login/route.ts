@@ -1,14 +1,12 @@
 import { cookies } from "next/headers";
-import { IUser } from "@/entities/user";
-import { setToken } from "../../../shared/cookies";
-// import { jwtDecode } from "jwt-decode";
-// import { mapJSONToUser } from "./mapJSONtoUser";
+import { setToken } from "@/shared/cookies";
+import { backendApiUrl } from "../config";
 
 export async function POST(req: Request, res: Response) {
     const data = await req.json();
     const newBody: BodyInit = data;
 
-    const response = await fetch("http:/localhost:8088/api/login", {
+    const response = await fetch(backendApiUrl + "/login", {
         method: "POST",
         body: JSON.stringify(newBody),
         headers: { "Content-Type": "application/json" },

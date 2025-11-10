@@ -1,12 +1,12 @@
 import { nextApi } from "@/shared";
 
 export interface IRegisterApi {
-    username: string;
+    profilename: string;
     password: string;
 }
 
 export interface ILoginApi {
-    username: string;
+    profilename: string;
     password: string;
 }
 

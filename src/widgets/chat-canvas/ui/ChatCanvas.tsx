@@ -4,12 +4,9 @@ import { MessageInput } from "./MessageInput";
 import "./ChatCanvas.css";
 import { useMessageList } from "../model/useMessageList";
 
-/**
- * @param conversationId по нему будет фетчиться чат
- */
-export function ChatCanvas({ conversationId }: { conversationId: number | null }) {
-    const messageList = useMessageList(conversationId, 0, 100);
-    if (conversationId) {
+export function ChatCanvas({ chatId }: { chatId: string | null }) {
+    const messageList = useMessageList(chatId, 0, 100);
+    if (chatId) {
         return (
             <div className="chat-canvas">
                 <MessageList messageList={messageList} />

@@ -10,12 +10,12 @@ async function getAccessToken(): Promise<string> {
     return "";
 }
 
-export const userApi = backendApi.injectEndpoints({
+export const profileApi = backendApi.injectEndpoints({
     endpoints: (build) => ({
-        getUser: build.query({
-            query: (userId: number) => `/user/${userId}`,
+        getProfile: build.query({
+            query: (profileId: number) => `/profile/${profileId}`,
         }),
     }),
 });
 
-export const { useGetUserQuery } = userApi;
+export const { useGetProfileQuery } = profileApi;

@@ -2,9 +2,9 @@ import { nextApi } from "@/shared";
 
 export const meApi = nextApi.injectEndpoints({
     endpoints: (build) => ({
-        getMe: build.query({
-            query: () => `/user/me`,
+        me: build.query({
+            query: () => `/profile/me`,
         }),
     }),
 });
-export const { useLazyGetMeQuery } = meApi;
+export const { useLazyMeQuery } = meApi;

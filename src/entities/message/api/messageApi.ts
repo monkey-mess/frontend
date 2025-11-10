@@ -1,27 +1,20 @@
-import { backendApi } from "@/shared/";
+import { nextApi } from "@/shared/";
 
-/**
- * Тип данных для обмена сообщений с бэкендом
- * @param srcId id отправителя сообщения
- * возможно нужно добавить dstId (для чатов)
- *
- */
 export interface IMessageApi {
-    srcId: number;
-    text: string;
-    date: string;
+    id: string;
+    conversationId: string;
+    senderId: string;
+    content: string;
+    createdAt: string;
 }
 
-/**
- * rtk query
- */
-const messageApi = backendApi.injectEndpoints({
+const messageApi = nextApi.injectEndpoints({
     endpoints: (build) => ({
-        getMessageList: build.query<IMessageApi[], number>({
-            query: (conversationId: number) => `chats/${conversationId}`,
+        messageList: build.query<IMessageApi[], string>({
+            query: (chatId: string) => `chats/${chatId}/messages`,
         }),
     }),
     overrideExisting: false,
 });
 
-export const { useGetMessageListQuery } = messageApi;
+export const { useMessageListQuery } = messageApi;
